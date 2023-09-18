@@ -20,7 +20,7 @@ import {
   ];
 
 
-export default function AddPayMethod (){
+export default function AddPayMethod ({ navigation }){
   const [nom, onChangeName] = useState('');
   const [number_of_Installments, onChangeNumber] = useState('');
   const [the_increase_rate, onChangeRate] = useState('');

@@ -15,7 +15,7 @@ const data = [
     'mode standard',
     'mode conventionel',
   ];
-export default function DueDate() {
+export default function DueDate({ navigation }) {
     const [montantech, onChangeMontantEch] = useState('');
     const [montanttot, onChangeMontantTot] = useState('');
 

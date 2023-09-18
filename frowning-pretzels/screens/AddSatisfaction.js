@@ -9,7 +9,7 @@ import {
   Pressable,
   View,
 } from 'react-native';
-export default function AddSatisfaction() {
+export default function AddSatisfaction({ navigation }) {
   const [cin, onChangeCin] = useState('');
   const [nom, onChangeNom] = useState('');
   const [texte, onChangeTexte] = useState('');

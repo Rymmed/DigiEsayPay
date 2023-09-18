@@ -9,7 +9,7 @@ import {
 import Button from "../components/Button";
 
 
-export default function AddCustomer() {
+export default function AddCustomer({ navigation }) {
   const [email, onChangeEmail] = useState('');
   const [nom, onChangeName] = useState('');
   const [surname, onChangeSurname] = useState('');
@@ -70,12 +70,7 @@ export default function AddCustomer() {
           <Pressable onPress={() => onValid(!isValid)} style={styles.button}>
             <Text style={styles.buttonText}>to validate</Text>
           </Pressable>
-          <Button
-          onPress={() => onValid(!isValid)}
-          disabled={!isValid}
-      >
-        valider
-      </Button>
+ 
         </>
       )}
     </ScrollView>

@@ -29,7 +29,7 @@ const param= [
   'à ecrire',
   'génerer automatiquement',
 ]
-export default function AddNotification() {
+export default function AddNotification({ navigation }) {
   const [Temps, onChangeTemps] = useState('minute');
   const [etat, onChangeEtat] = useState('');
   const [nombre, onChangeNombre] = useState('');

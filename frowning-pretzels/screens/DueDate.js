@@ -16,7 +16,7 @@ const data = [
     'sumsung',
     'iphone',
   ];
-export default function DueDate() {
+export default function DueDate({ navigation }) {
   const [cin, onChangeCin] = useState('');
   const [nom, onChangeNom] = useState('');
   const [num, onChangeNumero] = useState('');
