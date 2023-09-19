@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
+import Button from "../components/Button";
 
 import {
   ScrollView,
@@ -46,9 +47,12 @@ export default function AddSatisfaction({ navigation }) {
             placeholder={'Texte de satisfaction'}
             keyboardType={'default'}
           />
-          <Pressable onPress={() => onValid(!isValid)} style={styles.button}>
-            <Text style={styles.buttonText}>to validate</Text>
-          </Pressable>
+          <Button
+        onPress={() => onValid(!isValid)}
+        disabled={!cin || !nom || !texte}
+      >
+        Ajouter
+      </Button>
         </>
       )}
     </ScrollView>
@@ -73,13 +77,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   inputBox: {
+    margin:12 ,
     height: 40,
-    margin: 12,
+    marginVertical: 24,
+    borderRadius: 8,
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
-    borderColor: '#EDEFEE',
-    backgroundColor: '#EDEFEE',
+    borderColor: "#999999",
   },
   button: {
     fontSize: 22,
@@ -118,13 +123,13 @@ const styles = StyleSheet.create({
     alignItems: 'center', // Pour aligner verticalement le texte
   },
   textarea: {
+    margin:12 ,
+    marginVertical: 24,
+    borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#EDEFEE',
-    backgroundColor: '#EDEFEE',
-    borderRadius: 4,
-    padding: 8,
-    margin: 12,
+    padding: 10,
     fontSize: 16,
+    borderColor: "#999999",
     height: 120, // Adjust the height as needed
   },
   containerdate: {
@@ -147,12 +152,14 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   inputBoxdisabled: {
+    margin:12 ,
     height: 40,
-    margin: 12,
+    marginVertical: 24,
+    borderRadius: 8,
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
-    borderColor: 'grey',
+    borderColor: "#999999",
     backgroundColor: 'grey',
   },
 });

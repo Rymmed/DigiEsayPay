@@ -12,10 +12,10 @@ export default function Subscribe({ navigation }) {
     <View style={styles.container}>
       <Image
         style={styles.logo}
-        source={require("../assets/logo2.png")}
+        source={require("../assets/logo4.png")}
       />
       <Text style={styles.title}>
-        Subscribe to our newsletter for our latest delicious recipes!
+        Inscription
       </Text>
       <TextInput
         style={styles.input}
@@ -23,7 +23,7 @@ export default function Subscribe({ navigation }) {
         onChangeText={setEmail}
         keyboardType="email-address"
         textContentType="emailAddress"
-        placeholder={"Type your email"}
+        placeholder={"tapez votre email"}
       />
       <Button
         onPress={() => {
@@ -31,7 +31,7 @@ export default function Subscribe({ navigation }) {
         }}
         disabled={!isEmailValid}
       >
-        Subscribe
+        S'abonner
       </Button>
     </View>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
+import Button from "../components/Button";
 
 import {
   ScrollView,
@@ -150,9 +151,11 @@ export default function AddNotification({ navigation }) {
             placeholder={'Texte de message de notification'}
             keyboardType={'default'}
           />
-          <Pressable onPress={() => onValid(!isValid)} style={styles.button}>
-            <Text style={styles.buttonText}>to validate</Text>
-          </Pressable>
+          <Button
+        onPress={() => onValid(!isValid)}
+      >
+        Ajouter
+      </Button>
         </>
       )}
     </ScrollView>
@@ -177,13 +180,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   inputBox: {
+    margin:12 ,
     height: 40,
-    margin: 12,
+    marginVertical: 24,
+    borderRadius: 8,
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
-    borderColor: '#EDEFEE',
-    backgroundColor: '#EDEFEE',
+    borderColor: "#999999",
   },
   button: {
     fontSize: 22,
@@ -201,12 +205,13 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   textarea: {
+    margin:12 ,
+    marginVertical: 24,
+    borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#EDEFEE',
-    backgroundColor: '#EDEFEE',
-    borderRadius: 4,
-    padding: 8,
+    padding: 10,
     fontSize: 16,
+    borderColor: "#999999",
     height: 120, // Adjust the height as needed
   },
   label: {

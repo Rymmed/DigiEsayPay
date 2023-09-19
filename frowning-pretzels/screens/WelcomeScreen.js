@@ -8,18 +8,18 @@ export default function WelcomeScreen ({ navigation }) {
       <View style={styles.contentContainer}>
         <Image
           style={styles.logo}
-          source={require("../assets/logo2.png")}
+          source={require("../assets/logo4.png")}
         />
         <Text style={styles.title}>
-          Little Lemon, your local Mediterranean Bistro
+          DigiEsayPay  ,ton application a Paiement par facilité
         </Text>
       </View>
       <Button
         onPress={() => {
-          navigation.navigate("AddCustomer");
+          navigation.navigate("Subscribe");
         }}
       >
-        Newsletter
+        Inscription
       </Button>
     </View>
     

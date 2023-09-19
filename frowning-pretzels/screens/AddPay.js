@@ -1,5 +1,7 @@
 import React, { useState ,  useEffect} from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
+import Button from "../components/Button";
+
 import {
   ScrollView,
   Text,
@@ -111,9 +113,11 @@ export default function AddPay({ navigation }) {
           />
           
 
-          <Pressable onPress={() => onValid(!isValid)} style={styles.button}>
-            <Text style={styles.buttonText}>to validate</Text>
-          </Pressable>
+          <Button
+        onPress={() => onValid(!isValid)}
+      >
+        Ajouter
+      </Button>
         </>
       )}
     </ScrollView>
@@ -138,13 +142,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   inputBox: {
+    margin:12 ,
     height: 40,
-    margin: 12,
+    marginVertical: 24,
+    borderRadius: 8,
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
-    borderColor: '#EDEFEE',
-    backgroundColor: '#EDEFEE',
+    borderColor: "#999999",
   },
   button: {
     fontSize: 22,
@@ -212,12 +217,15 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   inputBoxdisabled: {
+    margin:12 ,
     height: 40,
-    margin: 12,
+    marginVertical: 24,
+    borderRadius: 8,
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
-    borderColor: 'grey',
+    borderColor: "#999999",
     backgroundColor: 'grey',
+
   },
 });

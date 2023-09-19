@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     padding: 8,
+    margin:17 ,
   },
   disabled: {
     backgroundColor: 'grey',
