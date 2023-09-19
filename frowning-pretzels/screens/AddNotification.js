@@ -51,7 +51,11 @@ export default function AddNotification({ navigation }) {
            <SelectDropdown
             data={data}
             selectedValue={Temps}
-
+            containerStyle={styles.dropdownContainer}
+            style={styles.dropdown}
+            itemStyle={styles.dropdownItem}
+            labelStyle={styles.dropdownLabel}
+            dropDownStyle={styles.dropdownList}
             placeholder="Temps"
             onValueChange={(itemValue) => onChangeTemps(itemValue)}
             // defaultValueByIndex={1} // use default value by index or default value
@@ -97,7 +101,7 @@ export default function AddNotification({ navigation }) {
             keyboardType={'default'}
           />
           <View  style={styles.viewcontainer}>
-          <Text style={styles.label}>l'unite de temps</Text>
+          <Text style={styles.label}>l'unite de temps:</Text>
            <SelectDropdown
             data={uni}
             selectedValue={unite}
@@ -118,7 +122,7 @@ export default function AddNotification({ navigation }) {
           />
           </View>
           <View  style={styles.viewcontainer}>
-          <Text style={styles.label}>parametré le message de Notification</Text>
+          <Text style={styles.label}>parametré le message de Notification:</Text>
            <SelectDropdown
             data={param}
             selectedValue={parametre}
@@ -156,18 +160,6 @@ export default function AddNotification({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  label: {
-    fontWeight: 'bold', // Pour rendre le texte en gras
-    marginRight: 5, // Espacement entre le label et le contenu
-    marginLeft:15,
-    fontSize: 15,
-    color: '#EDEFEE',
-    
-  },
-  viewcontainer: {
-    flexDirection: 'row', // Pour aligner le label à gauche et le contenu à droite
-    alignItems: 'center', // Pour aligner verticalement le texte
-  },
   container: {
     flex: 1,
   },
@@ -216,5 +208,38 @@ const styles = StyleSheet.create({
     padding: 8,
     fontSize: 16,
     height: 120, // Adjust the height as needed
+  },
+  label: {
+    fontWeight: 'bold', // Pour rendre le texte en gras
+    marginRight: 5, // Espacement entre le label et le contenu
+    marginLeft:15,
+    fontSize: 15,
+    color: 'black',
+    
+  },
+  viewcontainer: {
+    flexDirection: 'row', // Pour aligner le label à gauche et le contenu à droite
+    alignItems: 'center', // Pour aligner verticalement le texte
+  },
+  dropdownContainer: {
+    height: 40,
+    width: 200,
+  },
+  dropdown: {
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: '#ccc',
+  },
+  dropdownItem: {
+    justifyContent: 'flex-start',
+  },
+  dropdownLabel: {
+    fontSize: 16,
+    color: 'black',
+  },
+  dropdownList: {
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: '#ccc',
   },
 });

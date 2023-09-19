@@ -8,7 +8,7 @@ const data = [
   // Ajoutez d'autres entrées de données ici
 ];
 
-const TableView = ({ navigation }) => {
+const Dashboard = ({ navigation }) => {
   const renderItem = ({ item }) => (
     <View style={styles.row}>
       <Text style={styles.cell}>{item.nom}</Text>
