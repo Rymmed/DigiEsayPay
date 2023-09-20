@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
+import Button from "../components/Button";
 
 import {
   ScrollView,
@@ -9,7 +10,7 @@ import {
   Pressable,
   View,
 } from 'react-native';
-export default function AddSatisfaction() {
+export default function AddSatisfaction({ navigation }) {
   const [cin, onChangeCin] = useState('');
   const [nom, onChangeNom] = useState('');
   const [texte, onChangeTexte] = useState('');
@@ -46,9 +47,12 @@ export default function AddSatisfaction() {
             placeholder={'Texte de satisfaction'}
             keyboardType={'default'}
           />
-          <Pressable onPress={() => onValid(!isValid)} style={styles.button}>
-            <Text style={styles.buttonText}>to validate</Text>
-          </Pressable>
+          <Button
+        onPress={() => onValid(!isValid)}
+        disabled={!cin || !nom || !texte}
+      >
+        Ajouter
+      </Button>
         </>
       )}
     </ScrollView>
@@ -56,18 +60,6 @@ export default function AddSatisfaction() {
 }
 
 const styles = StyleSheet.create({
-  label: {
-    fontWeight: 'bold', // Pour rendre le texte en gras
-    marginRight: 5, // Espacement entre le label et le contenu
-    marginLeft:15,
-    fontSize: 15,
-    color: '#EDEFEE',
-    
-  },
-  viewcontainer: {
-    flexDirection: 'row', // Pour aligner le label à gauche et le contenu à droite
-    alignItems: 'center', // Pour aligner verticalement le texte
-  },
   container: {
     flex: 1,
   },
@@ -85,32 +77,24 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   inputBox: {
+    margin:12 ,
     height: 40,
-    margin: 12,
+    marginVertical: 24,
+    borderRadius: 8,
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
-    borderColor: '#EDEFEE',
-    backgroundColor: '#EDEFEE',
-  },
-  inputBoxdisabled: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    fontSize: 16,
-    borderColor: 'grey',
-    backgroundColor: 'grey',
+    borderColor: "#999999",
   },
   button: {
-    backgroundColor: "#42a5f5",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
+    fontSize: 22,
+    padding: 10,
+    marginVertical: 8,
+    margin: 100,
+    backgroundColor: '#EE9972',
+    borderColor: '#EE9972',
+    borderWidth: 2,
+    borderRadius: 50,
   },
   buttonText: {
     color: 'black',
@@ -123,8 +107,59 @@ const styles = StyleSheet.create({
     backgroundColor: '#EDEFEE',
     borderRadius: 4,
     padding: 8,
-    margin: 12,
     fontSize: 16,
     height: 120, // Adjust the height as needed
+  },
+  label: {
+    fontWeight: 'bold', // Pour rendre le texte en gras
+    marginRight: 5, // Espacement entre le label et le contenu
+    marginLeft:15,
+    fontSize: 15,
+    color: 'black',
+    
+  },
+  viewcontainer: {
+    flexDirection: 'row', // Pour aligner le label à gauche et le contenu à droite
+    alignItems: 'center', // Pour aligner verticalement le texte
+  },
+  textarea: {
+    margin:12 ,
+    marginVertical: 24,
+    borderRadius: 8,
+    borderWidth: 1,
+    padding: 10,
+    fontSize: 16,
+    borderColor: "#999999",
+    height: 120, // Adjust the height as needed
+  },
+  containerdate: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  labeldate: {
+    fontSize: 18,
+    marginBottom: 10,
+  },
+  datePicker: {
+    width: 200,
+  },
+  selectedDate: {
+    fontSize: 20,
+    marginTop: 10,
+  },
+  dateText: {
+    fontSize: 24,
+  },
+  inputBoxdisabled: {
+    margin:12 ,
+    height: 40,
+    marginVertical: 24,
+    borderRadius: 8,
+    borderWidth: 1,
+    padding: 10,
+    fontSize: 16,
+    borderColor: "#999999",
+    backgroundColor: 'grey',
   },
 });

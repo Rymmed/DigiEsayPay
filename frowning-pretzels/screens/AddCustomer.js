@@ -6,8 +6,10 @@ import {
   TextInput,
   Pressable,
 } from 'react-native';
+import Button from "../components/Button";
 
-export default function AddCustomer() {
+
+export default function AddCustomer({ navigation }) {
   const [email, onChangeEmail] = useState('');
   const [nom, onChangeName] = useState('');
   const [surname, onChangeSurname] = useState('');
@@ -65,9 +67,12 @@ export default function AddCustomer() {
             placeholder={'E-mail'}
             keyboardType={'default'}
           />
-          <Pressable onPress={() => onValid(!isValid)} style={styles.button}>
-            <Text style={styles.buttonText}>to validate</Text>
-          </Pressable>
+          <Button
+        onPress={() => onValid(!isValid)}
+      >
+        Ajouter
+      </Button>
+ 
         </>
       )}
     </ScrollView>
@@ -92,13 +97,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   inputBox: {
+    margin:17 ,
     height: 40,
-    margin: 12,
+    marginVertical: 24,
+    borderRadius: 8,
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
-    borderColor: 'EDEFEE',
-    backgroundColor: '#EDEFEE',
+    borderColor: "#999999",
   },
   button: {
     fontSize: 22,

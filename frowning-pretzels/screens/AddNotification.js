@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SelectDropdown from 'react-native-select-dropdown';
+import Button from "../components/Button";
 
 import {
   ScrollView,
@@ -29,7 +30,7 @@ const param= [
   'à ecrire',
   'génerer automatiquement',
 ]
-export default function AddNotification() {
+export default function AddNotification({ navigation }) {
   const [Temps, onChangeTemps] = useState('minute');
   const [etat, onChangeEtat] = useState('');
   const [nombre, onChangeNombre] = useState('');
@@ -51,7 +52,11 @@ export default function AddNotification() {
            <SelectDropdown
             data={data}
             selectedValue={Temps}
-
+            containerStyle={styles.dropdownContainer}
+            style={styles.dropdown}
+            itemStyle={styles.dropdownItem}
+            labelStyle={styles.dropdownLabel}
+            dropDownStyle={styles.dropdownList}
             placeholder="Temps"
             onValueChange={(itemValue) => onChangeTemps(itemValue)}
             // defaultValueByIndex={1} // use default value by index or default value
@@ -97,7 +102,7 @@ export default function AddNotification() {
             keyboardType={'default'}
           />
           <View  style={styles.viewcontainer}>
-          <Text style={styles.label}>l'unite de temps</Text>
+          <Text style={styles.label}>l'unite de temps:</Text>
            <SelectDropdown
             data={uni}
             selectedValue={unite}
@@ -118,7 +123,7 @@ export default function AddNotification() {
           />
           </View>
           <View  style={styles.viewcontainer}>
-          <Text style={styles.label}>parametré le message de Notification</Text>
+          <Text style={styles.label}>parametré le message de Notification:</Text>
            <SelectDropdown
             data={param}
             selectedValue={parametre}
@@ -146,9 +151,11 @@ export default function AddNotification() {
             placeholder={'Texte de message de notification'}
             keyboardType={'default'}
           />
-          <Pressable onPress={() => onValid(!isValid)} style={styles.button}>
-            <Text style={styles.buttonText}>to validate</Text>
-          </Pressable>
+          <Button
+        onPress={() => onValid(!isValid)}
+      >
+        Ajouter
+      </Button>
         </>
       )}
     </ScrollView>
@@ -156,18 +163,6 @@ export default function AddNotification() {
 }
 
 const styles = StyleSheet.create({
-  label: {
-    fontWeight: 'bold', // Pour rendre le texte en gras
-    marginRight: 5, // Espacement entre le label et le contenu
-    marginLeft:15,
-    fontSize: 15,
-    color: '#EDEFEE',
-    
-  },
-  viewcontainer: {
-    flexDirection: 'row', // Pour aligner le label à gauche et le contenu à droite
-    alignItems: 'center', // Pour aligner verticalement le texte
-  },
   container: {
     flex: 1,
   },
@@ -185,13 +180,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   inputBox: {
+    margin:12 ,
     height: 40,
-    margin: 12,
+    marginVertical: 24,
+    borderRadius: 8,
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
-    borderColor: '#EDEFEE',
-    backgroundColor: '#EDEFEE',
+    borderColor: "#999999",
   },
   button: {
     fontSize: 22,
@@ -209,12 +205,46 @@ const styles = StyleSheet.create({
     fontSize: 25,
   },
   textarea: {
+    margin:12 ,
+    marginVertical: 24,
+    borderRadius: 8,
     borderWidth: 1,
-    borderColor: '#EDEFEE',
-    backgroundColor: '#EDEFEE',
-    borderRadius: 4,
-    padding: 8,
+    padding: 10,
     fontSize: 16,
+    borderColor: "#999999",
     height: 120, // Adjust the height as needed
+  },
+  label: {
+    fontWeight: 'bold', // Pour rendre le texte en gras
+    marginRight: 5, // Espacement entre le label et le contenu
+    marginLeft:15,
+    fontSize: 15,
+    color: 'black',
+    
+  },
+  viewcontainer: {
+    flexDirection: 'row', // Pour aligner le label à gauche et le contenu à droite
+    alignItems: 'center', // Pour aligner verticalement le texte
+  },
+  dropdownContainer: {
+    height: 40,
+    width: 200,
+  },
+  dropdown: {
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: '#ccc',
+  },
+  dropdownItem: {
+    justifyContent: 'flex-start',
+  },
+  dropdownLabel: {
+    fontSize: 16,
+    color: 'black',
+  },
+  dropdownList: {
+    backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor: '#ccc',
   },
 });

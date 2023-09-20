@@ -6,8 +6,10 @@ import {
   TextInput,
   Pressable,
 } from 'react-native';
+import Button from "../components/Button";
 
-export default function LoginScreen() {
+
+export default function LoginScreen({ navigation }) {
   const [email, onChangeEmail] = useState('');
   const [password, onChangePassword] = useState('');
   const [loggedIn, onLogin] = useState(false);
@@ -35,9 +37,11 @@ export default function LoginScreen() {
             keyboardType={'default'}
             secureTextEntry={true}
           />
-          <Pressable onPress={() => onLogin(!loggedIn)} style={styles.button}>
-            <Text style={styles.buttonText}>Log in</Text>
-          </Pressable>
+          <Button
+        onPress={() => onValid(!isValid)}
+      >
+        Ajouter
+      </Button>
         </>
       )}
     </ScrollView>
@@ -62,13 +66,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   inputBox: {
+    margin:12 ,
     height: 40,
-    margin: 12,
+    marginVertical: 24,
+    borderRadius: 8,
     borderWidth: 1,
     padding: 10,
     fontSize: 16,
-    borderColor: 'EDEFEE',
-    backgroundColor: '#EDEFEE',
+    borderColor: "#999999",
   },
   button: {
     fontSize: 22,
