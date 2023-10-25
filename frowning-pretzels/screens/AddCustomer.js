@@ -7,7 +7,7 @@ import {
   Pressable,
 } from 'react-native';
 import Button from "../components/Button";
-
+import {isEmailValid, isNameValid,isPhoneValid,isCinValid} from "../utils"
 
 export default function AddCustomer({ navigation }) {
   const [email, onChangeEmail] = useState('');
@@ -24,40 +24,40 @@ export default function AddCustomer({ navigation }) {
 
       {!isValid && (
         <>
-          <Text style={styles.regularText}>Add Customer </Text>
+          <Text style={styles.regularText}>Ajouter Client</Text>
           <TextInput
             style={styles.inputBox}
             value={cin}
             onChangeText={onChangeCin}
-            placeholder={'National ID card'}
+            placeholder={'CIN'}
             keyboardType={'default'}
           />
           <TextInput
             style={styles.inputBox}
             value={nom}
             onChangeText={onChangeName}
-            placeholder={'name'}
+            placeholder={'nom'}
             keyboardType={'default'}
           />
           <TextInput
             style={styles.inputBox}
             value={surname}
             onChangeText={onChangeSurname}
-            placeholder={'Surname'}
+            placeholder={'Prenom'}
             keyboardType={'default'}
           />
           <TextInput
             style={styles.inputBox}
             value={phone}
             onChangeText={onChangePhone}
-            placeholder={'phone'}
+            placeholder={'Telephone'}
             keyboardType={'default'}
           />
           <TextInput
             style={styles.inputBox}
             value={address}
             onChangeText={onChangeAddress}
-            placeholder={'Address'}
+            placeholder={'Adresse'}
             keyboardType={'default'}
           />
           <TextInput
@@ -67,11 +67,36 @@ export default function AddCustomer({ navigation }) {
             placeholder={'E-mail'}
             keyboardType={'default'}
           />
-          <Button
-        onPress={() => onValid(!isValid)}
-      >
-        Ajouter
-      </Button>
+<Button
+ onPress={() => {
+
+
+if (isEmailValid(email) && isCinValid(cin) && isPhoneValid(phone) && isNameValid(nom) && isNameValid(surname))  {
+    // Les données sont valides, vous pouvez ajouter le client.
+    onValid(true);
+  } else {
+    // Les données ne sont pas valides, affichez des messages d'erreur spécifiques.
+    if (!isCinValid(cin)) {
+      console.error('CIN invalide');
+    }
+    if (!isEmailValid(email)) {
+      console.error('Email invalide');
+    }
+    if (!isPhoneValid(phone)) {
+      console.error('Téléphone invalide');
+    }
+    if (!isNameValid(surname)) {
+      console.error('Nom invalide');
+    }
+    if (!isNameValid(nom)) {
+      console.error('prenom invalide');
+    }
+  }
+}}
+>
+  Ajouter
+</Button>
+
  
         </>
       )}

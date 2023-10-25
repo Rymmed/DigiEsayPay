@@ -7,6 +7,7 @@ import {
   Pressable,
 } from 'react-native';
 import Button from "../components/Button";
+import {userIsLoggedIn} from "../utils"
 
 
 export default function LoginScreen({ navigation }) {
@@ -38,7 +39,7 @@ export default function LoginScreen({ navigation }) {
             secureTextEntry={true}
           />
           <Button
-        onPress={() => onValid(!isValid)}
+        onPress={() => userIsLoggedIn()}
       >
         Ajouter
       </Button>

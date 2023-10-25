@@ -14,52 +14,26 @@ import AddPay from '../screens/AddPay';
 import AddPayMethod from '../screens/AddPayMethod';
 import AddSatisfaction from '../screens/AddSatisfaction';
 import DueDate from '../screens/DueDate';
+import { userIsLoggedIn } from "../utils";
+
 
 const Drawer = createDrawerNavigator();
 export default function RootNavigator(){
+  const isLoggedIn = userIsLoggedIn ;
   return (
     <>
      
         <View style={styles.container}>
           <Header />
+          {isLoggedIn ? (
           <Drawer.Navigator
+screenOptions={({ route }) => ({
+  gestureEnabled: route.name !== 'Welcome',
+})}
+initialRouteName="Welcome"
+  style={styles.drawerNavigator} 
   useLegacyImplementation
-  initialRouteName="Dashboard"
-  style={styles.drawerNavigator}
 >
-<Drawer.Screen
-    name="Subscribe"
-    component={Subscribe}
-    options={{
-      drawerLabel: 'Subscribe',
-      drawerIcon: ({ color }) => (
-        <MaterialIcons name="home" color={color} size={24} /> // Icône Home pour "Welcome"
-      ),
-    }}
-    style={styles.drawerScreen}
-  />
-  <Drawer.Screen
-    name="Welcome"
-    component={WelcomeScreen}
-    options={{
-      drawerLabel: 'Welcome',
-      drawerIcon: ({ color }) => (
-        <MaterialIcons name="home" color={color} size={24} /> // Icône Home pour "Welcome"
-      ),
-    }}
-    style={styles.drawerScreen}
-  />
-  <Drawer.Screen
-    name="Login"
-    component={LoginScreen}
-    options={{
-      drawerLabel: 'Login',
-      drawerIcon: ({ color }) => (
-        <MaterialIcons name="login" color={color} size={24} /> // Icône Login pour "Login"
-      ),
-    }}
-    style={styles.drawerScreen}
-  />
   <Drawer.Screen
     name="AddCustomer"
     component={AddCustomer}
@@ -137,8 +111,54 @@ export default function RootNavigator(){
     }}
     style={styles.drawerScreen}
   />
-</Drawer.Navigator>
+</Drawer.Navigator>):(
+<Drawer.Navigator
+screenOptions={({ route }) => ({
+  gestureEnabled: route.name !== 'Welcome',
+})}
+initialRouteName="Welcome"
+  style={styles.drawerNavigator} 
+  useLegacyImplementation
+>
+<Drawer.Screen
+    name="Subscribe"
+    component={Subscribe}
+    options={{
+      swipeEnabled: false,
+      drawerLabel: 'Subscribe',
+      drawerIcon: ({ color }) => (
+        <MaterialIcons name="home" color={color} size={24} /> // Icône Home pour "Welcome"
+      ),
+    }}
+    style={styles.drawerScreen}
+  />
+  <Drawer.Screen
+    name="Welcome"
+    component={WelcomeScreen}
+    options={{
+      swipeEnabled: false,
+      drawerLabel: 'Welcome',
+      drawerIcon: ({ color }) => (
+        <MaterialIcons name="home" color={color} size={24} /> // Icône Home pour "Welcome"
+      ),
+    }}
+    style={styles.drawerScreen}
+  />
+  <Drawer.Screen
+    name="Login"
+    component={LoginScreen}
+    options={{
+        swipeEnabled: false,
+      drawerLabel: 'Login',
+      drawerIcon: ({ color }) => (
+        <MaterialIcons name="login" color={color} size={24} /> // Icône Login pour "Login"
+      ),
+    }}
+    style={styles.drawerScreen}
+  />
+  </Drawer.Navigator> )}
         </View>
+
         <View style={styles.footerContainer}>
           <Footer />
         </View>

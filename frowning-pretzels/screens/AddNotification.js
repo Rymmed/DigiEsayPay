@@ -37,6 +37,7 @@ export default function AddNotification({ navigation }) {
   const [unite, onChangeUnite] = useState('');
   const [parametre, onChangeParametre] = useState('');
   const [texte, onChangeTexte] = useState('');
+  const [isDropdownSelected, setIsDropdownSelected] = useState(false);
   const [isValid, onValid] = useState(false);
 
   return (
@@ -151,11 +152,19 @@ export default function AddNotification({ navigation }) {
             placeholder={'Texte de message de notification'}
             keyboardType={'default'}
           />
-          <Button
-        onPress={() => onValid(!isValid)}
-      >
-        Ajouter
-      </Button>
+<Button
+  onPress={() => {
+ // Vérifiez si les dropdowns sont sélectionnés
+ if (Temps && etat && unite && parametre) {
+  onValid(true); // Si les dropdowns sont sélectionnés, activez le bouton "Ajouter"
+} else {
+  // Affichez une erreur si les dropdowns ne sont pas sélectionnés
+  console.error('Sélectionnez tous les dropdowns');
+}
+  }}
+>
+  Ajouter
+</Button>
         </>
       )}
     </ScrollView>
