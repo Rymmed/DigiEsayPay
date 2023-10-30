@@ -108,13 +108,21 @@ export default function AddPay({ navigation }) {
             style={styles.inputBoxdisabled}
             value={dt}
             onChangeText={onChangeDt}
-            placeholder={currentDate+((montanttot-montantav)/montantech)}
+            placeholder={currentDate}
             keyboardType={'default'}
           />
           
 
           <Button
-        onPress={() => onValid(!isValid)}
+          onPress={() => {
+            // Vérifiez si les dropdowns sont sélectionnés
+            if (montantav && montanttot && montantech) {
+             onValid(true); // Si les dropdowns sont sélectionnés, activez le bouton "Ajouter"
+           } else {
+             // Affichez une erreur si les dropdowns ne sont pas sélectionnés
+             console.error('remplir les données');
+           }
+             }}
       >
         Ajouter
       </Button>

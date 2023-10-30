@@ -48,8 +48,16 @@ export default function AddSatisfaction({ navigation }) {
             keyboardType={'default'}
           />
           <Button
-        onPress={() => onValid(!isValid)}
-        disabled={!cin || !nom || !texte}
+                onPress={() => {
+                  // Vérifiez si les dropdowns sont sélectionnés
+                  if (cin && texte) {
+                   onValid(true); // Si les dropdowns sont sélectionnés, activez le bouton "Ajouter"
+                 } else {
+                   // Affichez une erreur si les dropdowns ne sont pas sélectionnés
+                   console.error('remplir les données');
+                 }
+                   }}
+        disabled={!cin || !texte}
       >
         Ajouter
       </Button>

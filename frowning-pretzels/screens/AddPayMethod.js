@@ -36,23 +36,23 @@ export default function AddPayMethod ({ navigation }){
 
       {!isValid && (
         <>
-          <Text style={styles.regularText}>Add Payment Method </Text>
+          <Text style={styles.regularText}>Ajouter Mode standard </Text>
           <TextInput
             style={styles.inputBox}
             value={nom}
             onChangeText={onChangeName}
-            placeholder={'name'}
+            placeholder={'nom'}
             keyboardType={'default'}
           />
           <TextInput
             style={styles.inputBox}
             value={number_of_Installments}
             onChangeText={onChangeNumber}
-            placeholder={'number of Installments;'}
+            placeholder={'nombre des échéances'}
             keyboardType={'default'}
           />
           <View  style={styles.viewcontainer}>
-          <Text style={styles.label}>installment Unit :</Text>
+          <Text style={styles.label}>l'unite de l'échéance:</Text>
            <SelectDropdown
             data={data}
             selectedValue={Enable}
@@ -76,11 +76,19 @@ export default function AddPayMethod ({ navigation }){
             style={styles.inputBox}
             value={the_increase_rate}
             onChangeText={onChangeRate}
-            placeholder={'The increase rate'}
+            placeholder={'Le taux de majoration'}
             keyboardType={'default'}
           />
           <Button
-        onPress={() => onValid(!isValid)}
+        onPress={() => {
+          // Vérifiez si les dropdowns sont sélectionnés
+          if (nom && number_of_Installments && the_increase_rate) {
+           onValid(true); // Si les dropdowns sont sélectionnés, activez le bouton "Ajouter"
+         } else {
+           // Affichez une erreur si les dropdowns ne sont pas sélectionnés
+           console.error('remplir les données');
+         }
+           }}
       >
         Ajouter
       </Button>

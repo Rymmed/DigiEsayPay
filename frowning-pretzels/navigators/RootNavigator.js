@@ -35,10 +35,10 @@ initialRouteName="Welcome"
   useLegacyImplementation
 >
   <Drawer.Screen
-    name="AddCustomer"
+    name="Ajouter Client"
     component={AddCustomer}
     options={{
-      drawerLabel: 'Add Customer',
+      drawerLabel: 'Ajouter Client',
       drawerIcon: ({ color }) => (
         <MaterialIcons name="person" color={color} size={24} /> // Icône Add pour "Add Customer"
       ),
@@ -46,10 +46,10 @@ initialRouteName="Welcome"
     style={styles.drawerScreen}
   />
   <Drawer.Screen
-    name="AddNotification"
+    name="Ajouter Notification"
     component={AddNotification}
     options={{
-      drawerLabel: 'Add Notification',
+      drawerLabel: 'Ajouter Notification',
       drawerIcon: ({ color }) => (
         <MaterialIcons name="notifications" color={color} size={24} /> // Icône Notifications pour "Add Notification"
       ),
@@ -57,10 +57,10 @@ initialRouteName="Welcome"
     style={styles.drawerScreen}
   />
   <Drawer.Screen
-    name="AddPay"
+    name="Ajouter Paiement"
     component={AddPay}
     options={{
-      drawerLabel: 'Add Pay',
+      drawerLabel: 'Ajouter Paiement',
       drawerIcon: ({ color }) => (
         <MaterialIcons name="payment" color={color} size={24} /> // Icône Payment pour "Add Pay"
       ),
@@ -68,10 +68,10 @@ initialRouteName="Welcome"
     style={styles.drawerScreen}
   />
   <Drawer.Screen
-    name="AddPayMethod"
+    name="Ajouter Mode standard"
     component={AddPayMethod}
     options={{
-      drawerLabel: 'Add Pay Method',
+      drawerLabel: 'Ajouter Mode standard',
       drawerIcon: ({ color }) => (
         <MaterialIcons name="payments" color={color} size={24} /> // Icône Credit Card pour "Add Pay Method"
       ),
@@ -79,10 +79,10 @@ initialRouteName="Welcome"
     style={styles.drawerScreen}
   />
   <Drawer.Screen
-    name="AddSatisfaction"
+    name="Ajouter Satisfaction"
     component={AddSatisfaction}
     options={{
-      drawerLabel: 'Add Satisfaction',
+      drawerLabel: 'Ajouter Satisfaction',
       drawerIcon: ({ color }) => (
         <MaterialIcons name="mood" color={color} size={24} /> // Icône Mood pour "Add Satisfaction"
       ),
@@ -101,10 +101,10 @@ initialRouteName="Welcome"
     style={styles.drawerScreen}
   />
   <Drawer.Screen
-    name="DueDate"
+    name="Payer l'echeance"
     component={DueDate}
     options={{
-      drawerLabel: 'Due Date',
+      drawerLabel: 'Payer l\'echeance',
       drawerIcon: ({ color }) => (
         <MaterialIcons name="access-time" color={color} size={24} /> // Icône Access Time pour "Due Date"
       ),

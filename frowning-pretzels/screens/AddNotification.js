@@ -155,11 +155,11 @@ export default function AddNotification({ navigation }) {
 <Button
   onPress={() => {
  // Vérifiez si les dropdowns sont sélectionnés
- if (Temps && etat && unite && parametre) {
+ if (texte && nombre) {
   onValid(true); // Si les dropdowns sont sélectionnés, activez le bouton "Ajouter"
 } else {
   // Affichez une erreur si les dropdowns ne sont pas sélectionnés
-  console.error('Sélectionnez tous les dropdowns');
+  console.error('remplir les données');
 }
   }}
 >

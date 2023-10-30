@@ -8,8 +8,9 @@ import {
 } from 'react-native';
 import Button from "../components/Button";
 import {isEmailValid, isNameValid,isPhoneValid,isCinValid} from "../utils"
+import { useNavigation } from '@react-navigation/native';
 
-export default function AddCustomer({ navigation }) {
+export default function AddCustomer() {
   const [email, onChangeEmail] = useState('');
   const [nom, onChangeName] = useState('');
   const [surname, onChangeSurname] = useState('');
@@ -17,6 +18,16 @@ export default function AddCustomer({ navigation }) {
   const [address, onChangeAddress] = useState('');
   const [cin, onChangeCin] = useState('');
   const [isValid, onValid] = useState(false);
+
+  const handleAnnuler = () => {
+    onChangeEmail('');
+    onChangeName('');
+    onChangeSurname('');
+    onChangePhone('');
+    onChangeAddress('');
+    onChangeCin('');
+    onValid(false);
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -96,6 +107,8 @@ if (isEmailValid(email) && isCinValid(cin) && isPhoneValid(phone) && isNameValid
 >
   Ajouter
 </Button>
+<Button  onPress={handleAnnuler} > Annuler </Button>
+
 
  
         </>

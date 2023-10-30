@@ -45,7 +45,7 @@ export default function DueDate({ navigation }) {
 
       {!isValid && (
         <>
-        <Text style={styles.regularText}>Ajouter Satisfaction </Text>
+        <Text style={styles.regularText}>Payer l'échéance</Text>
           <TextInput
             style={styles.inputBox}
             value={cin}
@@ -113,7 +113,15 @@ export default function DueDate({ navigation }) {
           
 
           <Button
-        onPress={() => onValid(!isValid)}
+                        onPress={() => {
+                          
+                          if (cin && montantdispo) {
+                           onValid(true); 
+                         } else {
+                           // Affichez une erreur si les dropdowns ne sont pas sélectionnés
+                           console.error('remplir les données');
+                         }
+                           }}
       >
         Ajouter
       </Button>
