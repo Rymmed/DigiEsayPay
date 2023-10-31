@@ -65,7 +65,6 @@ export default function AddNotification({ navigation }) {
 
       {!isValid && (
         <>
-        <Text style={styles.regularText}>Ajouter Notification </Text>
           
         <SafeAreaView style={styles.saveAreaViewContainer}>
       <StatusBar backgroundColor="#FFF" barStyle="dark-content" />

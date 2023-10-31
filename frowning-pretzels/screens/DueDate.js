@@ -57,7 +57,6 @@ export default function DueDate({ navigation }) {
 
       {!isValid && (
         <>
-        <Text style={styles.regularText}>Payer l'échéance</Text>
           <TextInput
             style={styles.inputBox}
             value={cin}

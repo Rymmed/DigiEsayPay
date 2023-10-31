@@ -55,7 +55,6 @@ export default function AddPay({ navigation }) {
 
       {!isValid && (
         <>
-        <Text style={styles.regularText}>Ajouter Paiement </Text>
           <View  style={styles.viewcontainer}>
           <SafeAreaView style={styles.saveAreaViewContainer}>
       <StatusBar backgroundColor="#FFF" barStyle="dark-content" />

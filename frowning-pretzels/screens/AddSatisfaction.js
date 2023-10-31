@@ -30,7 +30,6 @@ export default function AddSatisfaction({ navigation }) {
 
       {!isValid && (
         <>
-        <Text style={styles.regularText}>Ajouter Satisfaction </Text>
           <TextInput
             style={styles.inputBox}
             value={cin}

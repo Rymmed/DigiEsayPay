@@ -45,7 +45,6 @@ export default function AddPayMethod ({ navigation }){
 
       {!isValid && (
         <>
-          <Text style={styles.regularText}>Ajouter Mode standard </Text>
           <TextInput
             style={styles.inputBox}
             value={nom}

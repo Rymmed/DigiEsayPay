@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import WelcomeScreen from '../screens/WelcomeScreen';
 import Subscribe from '../screens/Subscribe';
+import ListSatisfaction from '../screens/ListSatisfaction';
 
 import LoginScreen from '../screens/LoginScreen';
 import { NavigationContainer } from '@react-navigation/native';
@@ -15,6 +16,8 @@ import AddPayMethod from '../screens/AddPayMethod';
 import AddSatisfaction from '../screens/AddSatisfaction';
 import DueDate from '../screens/DueDate';
 import { userIsLoggedIn } from "../utils";
+import calendar from '../screens/calendar';
+import Dashboard  from '../screens/Dashbord';
 
 
 const Drawer = createDrawerNavigator();
@@ -90,8 +93,30 @@ initialRouteName="Welcome"
     style={styles.drawerScreen}
   />
   <Drawer.Screen
+    name="Liste des Satisfaction"
+    component={ListSatisfaction}
+    options={{
+      drawerLabel: 'Liste des Satisfaction',
+      drawerIcon: ({ color }) => (
+        <MaterialIcons name="dashboard" color={color} size={24} /> // Icône Dashboard pour "Dashboard"
+      ),
+    }}
+    style={styles.drawerScreen}
+  />
+    <Drawer.Screen
+    name="Calendrier"
+    component={calendar}
+    options={{
+      drawerLabel: 'Calendrier',
+      drawerIcon: ({ color }) => (
+        <MaterialIcons name="dashboard" color={color} size={24} /> // Icône Dashboard pour "Dashboard"
+      ),
+    }}
+    style={styles.drawerScreen}
+  />
+    <Drawer.Screen
     name="Dashboard"
-    component={DueDate}
+    component={Dashboard}
     options={{
       drawerLabel: 'Dashboard',
       drawerIcon: ({ color }) => (
