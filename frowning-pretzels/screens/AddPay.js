@@ -8,10 +8,13 @@ import {
   StyleSheet,
   TextInput,
   Pressable,
-  View,
-  Platform,
-
+  View, SafeAreaView, StatusBar, Dimensions, Image
 } from 'react-native';
+import ButtonAnnuler from '../components/ButtonAnnuler';
+const {width} = Dimensions.get('window');
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+
 
 const data = [
     'mode standard',
@@ -25,8 +28,17 @@ export default function AddPay({ navigation }) {
   const [dt, onChangeDt] = useState('');
 
   const [isValid, onValid] = useState(false);
+  const [mode, onChangemode] = useState(null);
+
   const [Enable , setEnable]  = useState('day');
   const [currentDate, setCurrentDate] = useState('');
+  const handleAnnuler = () => {
+    onChangeMontantEch('');
+    onChangeMontantTot('');
+    onChangeMontantAv('');
+    onValid(false);
+  };
+
 
 
   useEffect(() => {
@@ -45,43 +57,39 @@ export default function AddPay({ navigation }) {
         <>
         <Text style={styles.regularText}>Ajouter Paiement </Text>
           <View  style={styles.viewcontainer}>
-          <Text style={styles.label}>mode de paiement :</Text>
-           <SelectDropdown
+          <SafeAreaView style={styles.saveAreaViewContainer}>
+      <StatusBar backgroundColor="#FFF" barStyle="dark-content" />
+      <View style={styles.viewcontainer}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          alwaysBounceVertical={false}
+          contentContainerStyle={styles.scrollViewContainer}>
+              <SelectDropdown
             data={data}
-            selectedValue={Enable}
-
-            placeholder="mode"
-            onValueChange={(itemValue) => setEnable(itemValue)}
-            defaultValue={'mode'} // use default value by index or default value
             onSelect={(selectedItem, index) => {
               console.log(selectedItem, index);
             }}
+            selectedValue={mode}
+            defaultButtonText={'mode de paiement'}
             buttonTextAfterSelection={(selectedItem, index) => {
               return selectedItem;
             }}
+            onValueChange={(selectedItem) => onChangemode(selectedItem)}
+
             rowTextForSelection={(item, index) => {
               return item;
             }}
+            buttonStyle={styles.dropdown1BtnStyle}
+            buttonTextStyle={styles.dropdown1BtnTxtStyle}
+            renderDropdownIcon={isOpened => {
+              return <FontAwesome name={isOpened ? 'chevron-up' : 'chevron-down'} color={'#444'} size={18} />;
+            }}
+            dropdownIconPosition={'right'}
+            dropdownStyle={styles.dropdown1DropdownStyle}
+            rowStyle={styles.dropdown1RowStyle}
+            rowTextStyle={styles.dropdown1RowTxtStyle}
           />
-          <SelectDropdown
-            data={data}
-            selectedValue={Enable}
-
-            placeholder="mode"
-            onValueChange={(itemValue) => setEnable(itemValue)}
-            defaultValue={'mode'} // use default value by index or default value
-            onSelect={(selectedItem, index) => {
-              console.log(selectedItem, index);
-            }}
-            buttonTextAfterSelection={(selectedItem, index) => {
-              return selectedItem;
-            }}
-            rowTextForSelection={(item, index) => {
-              return item;
-            }}
-          />
-          </View>        
-
+          </ScrollView></View></SafeAreaView></View>
          
           <TextInput
             style={styles.inputBox}
@@ -126,6 +134,8 @@ export default function AddPay({ navigation }) {
       >
         Ajouter
       </Button>
+      <ButtonAnnuler onPress={handleAnnuler} > Annuler </ButtonAnnuler>
+
         </>
       )}
     </ScrollView>
@@ -135,6 +145,7 @@ export default function AddPay({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FFF',
   },
   headerText: {
     padding: 40,
@@ -236,4 +247,111 @@ const styles = StyleSheet.create({
     backgroundColor: 'grey',
 
   },
+  headerTitle: {color: '#000', fontWeight: 'bold', fontSize: 16},
+  saveAreaViewContainer: {flex: 1, backgroundColor: '#FFF'},
+  viewContainer: {flex: 1, width, backgroundColor: '#FFF'},
+  scrollViewContainer: {
+    flexGrow: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingVertical: '1%',
+    paddingBottom: '1%',
+  },
+
+  dropdown1BtnStyle: {
+    width: '93%',
+    height: 40, // Réglez la hauteur sur 40 pour correspondre à inputBox
+    backgroundColor: '#FFF',
+    marginVertical: 24, // Réglez la marge verticale pour correspondre à inputBox
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#999999', // Réglez la couleur de la bordure pour correspondre à inputBox
+    fontSize: 16, // Réglez la taille de la police pour correspondre à inputBox
+  },
+  dropdown1BtnTxtStyle: {color: '#444', textAlign: 'left'},
+  dropdown1DropdownStyle: {backgroundColor: '#EFEFEF'},
+  dropdown1RowStyle: {backgroundColor: '#EFEFEF', borderBottomColor: '#C5C5C5'},
+  dropdown1RowTxtStyle: {color: '#444', textAlign: 'left'},
+
+  dropdown2BtnStyle: {
+    width: '80%',
+    height: 50,
+    backgroundColor: '#444',
+    borderRadius: 8,
+  },
+  dropdown2BtnTxtStyle: {
+    color: '#FFF',
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+  dropdown2DropdownStyle: {
+    backgroundColor: '#444',
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
+  },
+  dropdown2RowStyle: {backgroundColor: '#444', borderBottomColor: '#C5C5C5'},
+  dropdown2RowTxtStyle: {
+    color: '#FFF',
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+
+  dropdown3BtnStyle: {
+    width: '80%',
+    height: 50,
+    backgroundColor: '#FFF',
+    paddingHorizontal: 0,
+    borderWidth: 1,
+    borderRadius: 8,
+    borderColor: '#444',
+  },
+  dropdown3BtnChildStyle: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 18,
+  },
+  dropdown3BtnImage: {width: 45, height: 45, resizeMode: 'cover'},
+  dropdown3BtnTxt: {
+    color: '#444',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 24,
+    marginHorizontal: 12,
+  },
+  dropdown3DropdownStyle: {backgroundColor: 'slategray'},
+  dropdown3RowStyle: {
+    backgroundColor: 'slategray',
+    borderBottomColor: '#444',
+    height: 50,
+  },
+  dropdown3RowChildStyle: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    paddingHorizontal: 18,
+  },
+  dropdownRowImage: {width: 45, height: 45, resizeMode: 'cover'},
+  dropdown3RowTxt: {
+    color: '#F1F1F1',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 24,
+    marginHorizontal: 12,
+  },
+
+  dropdown4BtnStyle: {
+    width: '50%',
+    height: 50,
+    backgroundColor: '#FFF',
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: '#444',
+  },
+  dropdown4BtnTxtStyle: {color: '#444', textAlign: 'left'},
+  dropdown4DropdownStyle: {backgroundColor: '#EFEFEF'},
+  dropdown4RowStyle: {backgroundColor: '#EFEFEF', borderBottomColor: '#C5C5C5'},
+  dropdown4RowTxtStyle: {color: '#444', textAlign: 'left'},
 });

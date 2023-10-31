@@ -9,6 +9,7 @@ import {
 import Button from "../components/Button";
 import {isEmailValid, isNameValid,isPhoneValid,isCinValid} from "../utils"
 import { useNavigation } from '@react-navigation/native';
+import ButtonAnnuler from '../components/ButtonAnnuler';
 
 export default function AddCustomer() {
   const [email, onChangeEmail] = useState('');
@@ -35,7 +36,6 @@ export default function AddCustomer() {
 
       {!isValid && (
         <>
-          <Text style={styles.regularText}>Ajouter Client</Text>
           <TextInput
             style={styles.inputBox}
             value={cin}
@@ -107,7 +107,7 @@ if (isEmailValid(email) && isCinValid(cin) && isPhoneValid(phone) && isNameValid
 >
   Ajouter
 </Button>
-<Button  onPress={handleAnnuler} > Annuler </Button>
+<ButtonAnnuler onPress={handleAnnuler} > Annuler </ButtonAnnuler>
 
 
  
@@ -120,6 +120,7 @@ if (isEmailValid(email) && isCinValid(cin) && isPhoneValid(phone) && isNameValid
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FFF',
   },
   headerText: {
     padding: 40,

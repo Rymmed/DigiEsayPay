@@ -10,11 +10,18 @@ import {
   Pressable,
   View,
 } from 'react-native';
+import ButtonAnnuler from '../components/ButtonAnnuler';
 export default function AddSatisfaction({ navigation }) {
   const [cin, onChangeCin] = useState('');
   const [nom, onChangeNom] = useState('');
   const [texte, onChangeTexte] = useState('');
   const [isValid, onValid] = useState(false);
+  const handleAnnuler = () => {
+    onChangeCin('');
+    onChangeNom('');
+    onChangeTexte('');
+    onValid(false);
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -57,10 +64,11 @@ export default function AddSatisfaction({ navigation }) {
                    console.error('remplir les données');
                  }
                    }}
-        disabled={!cin || !texte}
       >
         Ajouter
       </Button>
+      <ButtonAnnuler onPress={handleAnnuler} > Annuler </ButtonAnnuler>
+
         </>
       )}
     </ScrollView>
@@ -70,6 +78,8 @@ export default function AddSatisfaction({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: '#FFF',
+
   },
   headerText: {
     padding: 40,

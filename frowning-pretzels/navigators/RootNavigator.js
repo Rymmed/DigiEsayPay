@@ -174,7 +174,6 @@ const styles = StyleSheet.create({
   },
   footerContainer: { backgroundColor: 'white' },
   drawerNavigator: {
-    backgroundColor: '#fff',
     width: 250,
     borderRightWidth: 1,
     borderColor: '#ccc',

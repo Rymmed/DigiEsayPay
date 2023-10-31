@@ -21,6 +21,7 @@ export default function WelcomeScreen ({ navigation }) {
       >
         Inscription
       </Button>
+
     </View>
     
   );
