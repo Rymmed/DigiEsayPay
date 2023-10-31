@@ -27,7 +27,8 @@ export default function Subscribe({ navigation }) {
       />
       <Button
         onPress={() => {
-          Alert.alert("Thanks for subscribing, stay tuned!");
+          navigation.navigate("Login");
+
         }}
         disabled={!isEmailValid}
       >

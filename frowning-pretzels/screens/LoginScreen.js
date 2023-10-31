@@ -39,8 +39,10 @@ export default function LoginScreen({ navigation }) {
             secureTextEntry={true}
           />
           <Button
-        onPress={() => userIsLoggedIn()}
-      >
+                onPress={() => {
+                  navigation.navigate("nav");
+        
+                }}>
         Ajouter
       </Button>
         </>
