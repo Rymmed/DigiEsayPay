@@ -16,8 +16,10 @@ import AddPayMethod from '../screens/AddPayMethod';
 import AddSatisfaction from '../screens/AddSatisfaction';
 import DueDate from '../screens/DueDate';
 import { userIsLoggedIn } from "../utils";
-import calendar from '../screens/calendar';
+import Calendar from '../screens/Calendrier';
 import Dashboard  from '../screens/Dashbord';
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 
 const Drawer = createDrawerNavigator();
@@ -98,19 +100,19 @@ initialRouteName="Welcome"
     options={{
       drawerLabel: 'Liste des Satisfaction',
       drawerIcon: ({ color }) => (
-        <MaterialIcons name="dashboard" color={color} size={24} /> // Icône Dashboard pour "Dashboard"
+        <MaterialIcons name="list" color={color} size={24} /> // Icône Dashboard pour "Dashboard"
       ),
     }}
     style={styles.drawerScreen}
   />
     <Drawer.Screen
     name="Calendrier"
-    component={calendar}
+    component={Calendar}
     options={{
       drawerLabel: 'Calendrier',
       drawerIcon: ({ color }) => (
-        <MaterialIcons name="dashboard" color={color} size={24} /> // Icône Dashboard pour "Dashboard"
-      ),
+        <Icon name='calendar' size={24} color="black" />
+        ),
     }}
     style={styles.drawerScreen}
   />

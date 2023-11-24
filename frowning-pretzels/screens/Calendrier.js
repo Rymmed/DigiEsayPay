@@ -3,7 +3,7 @@ import { Calendar, LocaleConfig } from 'react-native-calendars';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 
 
-export default function calendar({ navigation }) {
+export default function Calendrier({ navigation }) {
  
     const [selected, setSelected] = useState('');
 
@@ -17,16 +17,16 @@ export default function calendar({ navigation }) {
     height: 350
   }}
   // Specify the current date
-  current={'2012-03-01'}
+  current={'2023-12-04'}
   // Callback that gets called when the user selects a day
   onDayPress={day => {
     console.log('selected day', day);
   }}
   // Mark specific dates as marked
   markedDates={{
-    '2012-03-01': {selected: true, marked: true, selectedColor: 'blue'},
-    '2012-03-02': {marked: true},
-    '2012-03-03': {selected: true, marked: true, selectedColor: 'blue'}
+    '2023-12-05': {selected: true, marked: true, selectedColor: 'blue'},
+    '2023-12-06': {marked: true},
+    '2023-12-07': {selected: true, marked: true, selectedColor: 'blue'}
   }}
 />
   )};
