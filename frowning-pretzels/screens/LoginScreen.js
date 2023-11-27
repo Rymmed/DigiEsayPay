@@ -47,7 +47,17 @@ export default function LoginScreen({ navigation }) {
           />
           <Button
                 onPress={() => {
-                  navigation.navigate("nav");
+                  const adminLogin = "Hedimr@gmail.com";
+const adminPassword = "Hedimr";
+const clientLogin = "mari.mans.info@gmail.com";
+const clientPassword = "Mari";
+
+  if (email === adminLogin && password === adminPassword) {
+                  navigation.navigate("nav");}else if (email === clientLogin && password === clientPassword) {
+                    navigation.navigate("navC");
+                  } else {
+                    return "Identifiants incorrects, veuillez réessayer";
+                  }
                 }}>
         se connecter
       </Button>

@@ -33,4 +33,26 @@ return true ;
       return nameRegex.test(name);
     }
     
-    
+    // Simuler les valeurs de login et de mot de passe
+const adminLogin = "admin@gmail.com";
+const adminPassword = "admin";
+const clientLogin = "client@gmail.com";
+const clientPassword = "client";
+
+// Fonction pour vérifier l'authentification
+function authenticate(login, password) {
+  if (login === adminLogin && password === adminPassword) {
+    return "Session administrateur ouverte";
+  } else if (login === clientLogin && password === clientPassword) {
+    return "Session client ouverte";
+  } else {
+    return "Identifiants incorrects, veuillez réessayer";
+  }
+}
+
+// Exemple d'utilisation
+const userLogin = "admin";
+const userPassword = "admin";
+
+const sessionStatus = authenticate(userLogin, userPassword);
+console.log(sessionStatus);

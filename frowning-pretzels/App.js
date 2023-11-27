@@ -7,6 +7,7 @@ import LoginScreen from "./screens/LoginScreen";
 import CreateUser from "./screens/CreateUser";
 
 import Navig from "./screens/Navig";
+import NavigClient from "./screens/NavigClient";
 const Stack = createStackNavigator();
 
 
@@ -20,6 +21,8 @@ export default function App() {
         <Stack.Screen name="Subscribe" component={Subscribe} />
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="nav" component={Navig} />
+        <Stack.Screen name="navC" component={NavigClient} />
+
         <Stack.Screen name="CreateUser" component={CreateUser} />
 
 
