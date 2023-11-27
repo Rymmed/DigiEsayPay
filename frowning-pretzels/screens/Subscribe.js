@@ -43,6 +43,9 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 24,
     backgroundColor: "white",
+    justifyContent: 'center',
+
+  
   },
   title: {
     color: "#333333",

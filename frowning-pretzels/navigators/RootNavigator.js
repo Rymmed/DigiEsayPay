@@ -16,8 +16,15 @@ import AddPayMethod from '../screens/AddPayMethod';
 import AddSatisfaction from '../screens/AddSatisfaction';
 import DueDate from '../screens/DueDate';
 import { userIsLoggedIn } from "../utils";
-import Calendar from '../screens/Calendrier';
-import Dashboard  from '../screens/Dashbord';
+import Calendrier from '../screens/Calendrier';
+import Dashboards  from '../screens/Dashbords';
+import Satisfactions  from '../screens/Satisfactions';
+
+
+
+import FontAwesome from 'react-native-vector-icons/FontAwesome'; // Import another icon library
+
+
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
@@ -35,10 +42,43 @@ export default function RootNavigator(){
 screenOptions={({ route }) => ({
   gestureEnabled: route.name !== 'Welcome',
 })}
-initialRouteName="Welcome"
+initialRouteName="Dashboards"
   style={styles.drawerNavigator} 
   useLegacyImplementation
 >
+<Drawer.Screen
+    name="Dashboards"
+    component={Dashboards}
+    options={{
+      drawerLabel: 'Dashboards',
+      drawerIcon: ({ color }) => (
+        <MaterialIcons name="dashboard" color={color} size={24} /> 
+      ),
+    }}
+    style={styles.drawerScreen}
+  />
+    <Drawer.Screen
+    name="Satisfaction"
+    component={Satisfactions}
+    options={{
+      drawerLabel: 'Satisfaction',
+      drawerIcon: ({ color }) => (
+        <MaterialIcons name="mood" color={color} size={24} /> // Icône Mood pour "Add Satisfaction"
+      ),
+    }}
+    style={styles.drawerScreen}
+  />
+      <Drawer.Screen
+    name="Calendrier"
+    component={Calendrier}
+    options={{
+      drawerLabel: 'Calendrier',
+      drawerIcon: ({ color }) => (
+        <Icon name='calendar' size={24} color="black" />
+        ),
+    }}
+    style={styles.drawerScreen}
+  />
   <Drawer.Screen
     name="Ajouter Client"
     component={AddCustomer}
@@ -83,50 +123,9 @@ initialRouteName="Welcome"
     }}
     style={styles.drawerScreen}
   />
-  <Drawer.Screen
-    name="Ajouter Satisfaction"
-    component={AddSatisfaction}
-    options={{
-      drawerLabel: 'Ajouter Satisfaction',
-      drawerIcon: ({ color }) => (
-        <MaterialIcons name="mood" color={color} size={24} /> // Icône Mood pour "Add Satisfaction"
-      ),
-    }}
-    style={styles.drawerScreen}
-  />
-  <Drawer.Screen
-    name="Liste des Satisfaction"
-    component={ListSatisfaction}
-    options={{
-      drawerLabel: 'Liste des Satisfaction',
-      drawerIcon: ({ color }) => (
-        <MaterialIcons name="list" color={color} size={24} /> // Icône Dashboard pour "Dashboard"
-      ),
-    }}
-    style={styles.drawerScreen}
-  />
-    <Drawer.Screen
-    name="Calendrier"
-    component={Calendar}
-    options={{
-      drawerLabel: 'Calendrier',
-      drawerIcon: ({ color }) => (
-        <Icon name='calendar' size={24} color="black" />
-        ),
-    }}
-    style={styles.drawerScreen}
-  />
-    <Drawer.Screen
-    name="Dashboard"
-    component={Dashboard}
-    options={{
-      drawerLabel: 'Dashboard',
-      drawerIcon: ({ color }) => (
-        <MaterialIcons name="dashboard" color={color} size={24} /> // Icône Dashboard pour "Dashboard"
-      ),
-    }}
-    style={styles.drawerScreen}
-  />
+
+
+
   <Drawer.Screen
     name="Payer l'echeance"
     component={DueDate}

@@ -4,9 +4,9 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
 const data = [
-  { cin: '11111111', nom: 'med ali', objet: 'iphone', date: '02/12',action:'' },
-  { cin: '11115555', nom: 'Amir ali', objet: 'Hwawie a12', date: '02/12',action:'' },
-  { cin: '11122222', nom: 'mari mans', objet: 'Sumsung', date: '02/12',action:'' },
+  { cin: '13331111', nom: 'ali med', objet: 'Smart watch', date: '01/12',action:'' },
+  { cin: '11225555', nom: 'Amir mans', objet: 'ecouteur sans fils', date: '30/11',action:'' },
+  { cin: '15482222', nom: 'ali mans', objet: 'casque', date: '29/11',action:'' },
 
   
 

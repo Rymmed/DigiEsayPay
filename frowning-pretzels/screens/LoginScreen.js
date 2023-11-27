@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import {
-  ScrollView,
+  View,
   Text,
   StyleSheet,
   TextInput,
   Pressable,
+  Image,
+  TouchableOpacity,
 } from 'react-native';
 import Button from "../components/Button";
+import ButtonAnnuler from "../components/ButtonAnnuler";
+
 import {userIsLoggedIn} from "../utils"
 
 
@@ -16,13 +20,16 @@ export default function LoginScreen({ navigation }) {
   const [loggedIn, onLogin] = useState(false);
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.headerText}>Welcome to Digiesaypay</Text>
+    <View style={styles.container}>
+      <Image
+        style={styles.logo}
+        source={require("../assets/logo4.png")}
+      />
       {loggedIn && <Text style={styles.headerText}>You are logged in!</Text>}
 
       {!loggedIn && (
         <>
-          <Text style={styles.regularText}>Login to continue </Text>
+          <Text style={styles.regularText}>Authentification </Text>
           <TextInput
             style={styles.inputBox}
             value={email}
@@ -41,19 +48,30 @@ export default function LoginScreen({ navigation }) {
           <Button
                 onPress={() => {
                   navigation.navigate("nav");
-        
                 }}>
-        Ajouter
+        se connecter
       </Button>
+      <ButtonAnnuler
+                onPress={() => {
+                    navigation.goBack() ;
+                }}>Annuler</ButtonAnnuler>
+      <TouchableOpacity style={{paddingRight:10 ,width:"100%",alignItems:"flex-end",}}><
+                  Text  onPress={()=>{navigation.navigate("CreateUser");}} style={{fontWeight:"bold", color : "blue"}}>Create new user</Text>
+                </TouchableOpacity>
         </>
       )}
-    </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding: 24,
+    backgroundColor: "white",
+    justifyContent: 'center',
+
+  
   },
   headerText: {
     padding: 40,
@@ -69,14 +87,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   inputBox: {
-    margin:12 ,
-    height: 40,
-    marginVertical: 24,
-    borderRadius: 8,
-    borderWidth: 1,
-    padding: 10,
-    fontSize: 16,
-    borderColor: "#999999",
+      height: 40,
+      marginVertical: 24,
+      borderRadius: 8,
+      borderWidth: 1,
+      padding: 10,
+      fontSize: 16,
+      borderColor: "#EDEFEE",
+    
   },
   button: {
     fontSize: 22,
@@ -92,5 +110,11 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'center',
     fontSize: 25,
+  },
+  logo: {
+    height: 100,
+    width: 300,
+    resizeMode: "contain",
+    marginBottom: 32,
   },
 });

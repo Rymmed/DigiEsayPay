@@ -4,9 +4,10 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
 const data = [
-  { cin: '11111111', nom: 'med ali', objet: 'iphone', date: '02/12',action:'' },
-  { cin: '11115555', nom: 'Amir ali', objet: 'Hwawie a12', date: '02/12',action:'' },
-  { cin: '11122222', nom: 'mari mans', objet: 'Sumsung', date: '02/12',action:'' },
+  { id: '1', Temps: 'apres', etat: 'payer a temps promis', nb: '4',unite:'minute',action:'' },
+  { id: '2', Temps: 'avant', etat: 'en cours', nb: '2',unite:'jour',action:'' },
+  { id: '3', Temps: 'apres', etat: 'en retard', nb: '1',unite:'jour',action:'' },
+  { id: '4', Temps: 'apres', etat: 'payer en retard', nb: '4',unite:'minute',action:'' },
 
   
 
@@ -16,25 +17,34 @@ const data = [
 export default function Dashboard({ navigation }) {
   const renderItem = ({ item }) => (
     <View style={styles.row}>
-      <Text style={styles.cell}>{item.cin}</Text>
-      <Text style={styles.cell}>{item.nom}</Text>
-      <Text style={styles.cell}>{item.objet}</Text>
-      <Text style={styles.cell}>{item.date}</Text>
+      <Text style={styles.cell}>{item.id}</Text>
+      <Text style={styles.cell}>{item.Temps}</Text>
+      <Text style={styles.cell}>{item.etat}</Text>
+      <Text style={styles.cell}>{item.nb}</Text>
+      <Text style={styles.cell}>{item.unite}</Text>
+
       <Text style={styles.cell}>
-      <Icon  name="payment" size={20} color="#007BFF" onPress={() => {    Alert.alert('Paiement effectué', 'Utilisateur payé');
+      <Icon name="edit" size={20} color="#007BFF" onPress={() => {
+  // Replace the following code with the logic for modification
+  Alert.alert('Modification effectuée', 'Utilisateur modifié');
 }} />
-      <Icon   name="notifications" size={20} color="#007BFF" onPress={() => {Alert.alert('Notification envoyée', 'Utilisateur notifié');}} />
- </Text>
+
+<Icon name="delete" size={20} color="#007BFF" onPress={() => {
+  // Replace the following code with the logic for deletion
+  Alert.alert('Suppression effectuée', 'Utilisateur supprimé');
+}} /> </Text>
     </View>
   );
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerText}>Cin</Text>
-        <Text style={styles.headerText}>Nom</Text>
-        <Text style={styles.headerText}>Objet</Text>
-        <Text style={styles.headerText}>Date</Text>
+        <Text style={styles.headerText}>id</Text>
+        <Text style={styles.headerText}>Temps</Text>
+        <Text style={styles.headerText}>etat</Text>
+        <Text style={styles.headerText}>nb</Text>
+        <Text style={styles.headerText}>unite</Text>
+
         <Text style={styles.headerText}>Action</Text>
 
 
@@ -42,7 +52,7 @@ export default function Dashboard({ navigation }) {
       <FlatList
         data={data}
         renderItem={renderItem}
-        keyExtractor={(item) => item.cin}
+        keyExtractor={(item) => item.id}
       />
     </View>
   );

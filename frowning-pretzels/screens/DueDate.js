@@ -53,7 +53,7 @@ export default function DueDate({ navigation }) {
   return (
     <ScrollView style={styles.container}>
         
-      {isValid && <Text style={styles.headerText}>You are logged in!</Text>}
+      {isValid && <Text style={styles.headerText}>Ajout réussi</Text>}
 
       {!isValid && (
         <>
