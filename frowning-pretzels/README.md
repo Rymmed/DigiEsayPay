@@ -1,3 +1,4 @@
+React Native mobile application providing real-time services to both the service provider and the company's clients, enabling seamless installment payments. Simultaneously, the administrator can manage application users and configure essential data required for installment payments.
 <p align="center">
   <img src="https://github.com/112-mariem-mansour/DigiEsayPay/assets/125809959/700f8ad8-e815-4a8f-9dd0-f10e613b2a9e" width="500" height="1000">
 </p>
