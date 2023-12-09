@@ -1,34 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   ScrollView,
   Text,
   StyleSheet,
   TextInput,
   Pressable,
-} from 'react-native';
+} from "react-native";
 import Button from "../components/Button";
-import {isEmailValid, isNameValid,isPhoneValid,isCinValid} from "../utils"
-import { useNavigation } from '@react-navigation/native';
-import ButtonAnnuler from '../components/ButtonAnnuler';
+import { isEmailValid, isNameValid, isPhoneValid, isCinValid } from "../utils";
+import { useNavigation } from "@react-navigation/native";
+import ButtonAnnuler from "../components/ButtonAnnuler";
+import firebase from "../config";
+
+const database = firebase.database();
 
 export default function AddCustomer() {
-  const [email, onChangeEmail] = useState('');
-  const [nom, onChangeName] = useState('');
-  const [surname, onChangeSurname] = useState('');
-  const [phone, onChangePhone] = useState('');
-  const [address, onChangeAddress] = useState('');
-  const [cin, onChangeCin] = useState('');
+  const [email, onChangeEmail] = useState("");
+  const [nom, onChangeName] = useState("");
+  const [surname, onChangeSurname] = useState("");
+  const [phone, onChangePhone] = useState("");
+  const [address, onChangeAddress] = useState("");
+  const [cin, onChangeCin] = useState("");
   const [isValid, onValid] = useState(false);
 
   const handleAnnuler = () => {
-    onChangeEmail('');
-    onChangeName('');
-    onChangeSurname('');
-    onChangePhone('');
-    onChangeAddress('');
-    onChangeCin('');
+    onChangeEmail("");
+    onChangeName("");
+    onChangeSurname("");
+    onChangePhone("");
+    onChangeAddress("");
+    onChangeCin("");
     onValid(false);
   };
+  const saveCustomerData = async () => {
+    const ref_customers = database.ref("customers");
+    
+    const ref_un_customer = ref_customers.child("customer");
+    ref_un_customer.set({
+      cin: cin,
+      nom: nom,
+      surname: surname,
+      phone: phone,
+      address: address,
+      email: email
+    });
+  };
+
 
   return (
     <ScrollView style={styles.container}>
@@ -40,77 +57,79 @@ export default function AddCustomer() {
             style={styles.inputBox}
             value={cin}
             onChangeText={onChangeCin}
-            placeholder={'CIN'}
-            keyboardType={'default'}
+            placeholder={"CIN"}
+            keyboardType={"default"}
           />
           <TextInput
             style={styles.inputBox}
             value={nom}
             onChangeText={onChangeName}
-            placeholder={'nom'}
-            keyboardType={'default'}
+            placeholder={"nom"}
+            keyboardType={"default"}
           />
           <TextInput
             style={styles.inputBox}
             value={surname}
             onChangeText={onChangeSurname}
-            placeholder={'Prenom'}
-            keyboardType={'default'}
+            placeholder={"Prenom"}
+            keyboardType={"default"}
           />
           <TextInput
             style={styles.inputBox}
             value={phone}
             onChangeText={onChangePhone}
-            placeholder={'Telephone'}
-            keyboardType={'default'}
+            placeholder={"Telephone"}
+            keyboardType={"default"}
           />
           <TextInput
             style={styles.inputBox}
             value={address}
             onChangeText={onChangeAddress}
-            placeholder={'Adresse'}
-            keyboardType={'default'}
+            placeholder={"Adresse"}
+            keyboardType={"default"}
           />
           <TextInput
             style={styles.inputBox}
             value={email}
             onChangeText={onChangeEmail}
-            placeholder={'E-mail'}
-            keyboardType={'default'}
+            placeholder={"E-mail"}
+            keyboardType={"default"}
           />
-<Button
- onPress={() => {
-
-
-if (isEmailValid(email) && isCinValid(cin) && isPhoneValid(phone) && isNameValid(nom) && isNameValid(surname))  {
-    // Les données sont valides, vous pouvez ajouter le client.
-    onValid(true);
-  } else {
-    // Les données ne sont pas valides, affichez des messages d'erreur spécifiques.
-    if (!isCinValid(cin)) {
-      console.error('CIN invalide');
-    }
-    if (!isEmailValid(email)) {
-      console.error('Email invalide');
-    }
-    if (!isPhoneValid(phone)) {
-      console.error('Téléphone invalide');
-    }
-    if (!isNameValid(surname)) {
-      console.error('Nom invalide');
-    }
-    if (!isNameValid(nom)) {
-      console.error('prenom invalide');
-    }
-  }
-}}
->
-  Ajouter
-</Button>
-<ButtonAnnuler onPress={handleAnnuler} > Annuler </ButtonAnnuler>
-
-
- 
+          <Button
+            onPress={() => {
+              if (
+                isEmailValid(email) &&
+                isCinValid(cin) &&
+                isPhoneValid(phone) &&
+                isNameValid(nom) &&
+                isNameValid(surname)
+              ) {
+                // Les données sont valides, vous pouvez ajouter le client.
+                onValid(true);
+                saveCustomerData();
+              } else {
+                // Les données ne sont pas valides, affichez des messages d'erreur spécifiques.
+                if (!isCinValid(cin)) {
+                  console.error("CIN invalide");
+                }
+                if (!isEmailValid(email)) {
+                  console.error("Email invalide");
+                }
+                if (!isPhoneValid(phone)) {
+                  console.error("Téléphone invalide");
+                }
+                if (!isNameValid(surname)) {
+                  console.error("Nom invalide");
+                }
+                if (!isNameValid(nom)) {
+                  console.error("prenom invalide");
+                }
+              }
+            }}
+          >
+            Ajouter
+          </Button>
+          <ButtonAnnuler onPress={handleAnnuler}> Annuler </ButtonAnnuler>
         </>
       )}
     </ScrollView>
@@ -120,23 +139,23 @@ if (isEmailValid(email) && isCinValid(cin) && isPhoneValid(phone) && isNameValid
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: "#FFF",
   },
   headerText: {
     padding: 40,
     fontSize: 30,
-    color: 'black',
-    textAlign: 'center',
+    color: "black",
+    textAlign: "center",
   },
   regularText: {
     fontSize: 24,
     padding: 20,
     marginVertical: 8,
-    color: 'black',
-    textAlign: 'center',
+    color: "black",
+    textAlign: "center",
   },
   inputBox: {
-    margin:17 ,
+    margin: 17,
     height: 40,
     marginVertical: 24,
     borderRadius: 8,
@@ -150,14 +169,14 @@ const styles = StyleSheet.create({
     padding: 10,
     marginVertical: 8,
     margin: 100,
-    backgroundColor: '#EE9972',
-    borderColor: '#EE9972',
+    backgroundColor: "#EE9972",
+    borderColor: "#EE9972",
     borderWidth: 2,
     borderRadius: 50,
   },
   buttonText: {
-    color: 'black',
-    textAlign: 'center',
+    color: "black",
+    textAlign: "center",
     fontSize: 25,
   },
 });

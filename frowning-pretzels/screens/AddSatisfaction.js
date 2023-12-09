@@ -11,6 +11,9 @@ import {
   View,
 } from 'react-native';
 import ButtonAnnuler from '../components/ButtonAnnuler';
+import firebase from '../config';
+
+const database = firebase.database();
 export default function AddSatisfaction({ navigation }) {
   const [cin, onChangeCin] = useState('');
   const [nom, onChangeNom] = useState('');
@@ -21,6 +24,17 @@ export default function AddSatisfaction({ navigation }) {
     onChangeNom('');
     onChangeTexte('');
     onValid(false);
+  };
+
+  const saveSatisfactionData = async () => {
+    const ref_satisfactions = database.ref("satisfactions");
+    
+    const ref_satisfaction = ref_satisfactions.child("satisfaction");
+    ref_satisfaction.set({
+      cin: cin,
+      nom: nom,
+      texte: texte
+    });
   };
 
   return (
@@ -58,6 +72,7 @@ export default function AddSatisfaction({ navigation }) {
                   // Vérifiez si les dropdowns sont sélectionnés
                   if (cin && texte) {
                    onValid(true); // Si les dropdowns sont sélectionnés, activez le bouton "Ajouter"
+                   saveSatisfactionData();
                  } else {
                    // Affichez une erreur si les dropdowns ne sont pas sélectionnés
                    console.error('remplir les données');
